@@ -1,6 +1,6 @@
 # test_sumar.py
 import unittest
-from codigo import sumar
+from sumar import sumar
 
 class TestSumar(unittest.TestCase):
 
