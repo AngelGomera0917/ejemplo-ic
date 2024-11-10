@@ -1,10 +1,12 @@
-# En test/test_codigo.py
+# test/test_codigo.py
 import sys
 import os
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))  # Agregar la carpeta principal al path
+import unittest  # Asegúrate de importar unittest
+
+# Agregar la carpeta principal (donde está sumar.py) al sys.path
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from sumar import sumar  # Ahora Python podrá encontrar sumar.py
-
 
 class TestSumar(unittest.TestCase):
 
@@ -16,3 +18,4 @@ class TestSumar(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
