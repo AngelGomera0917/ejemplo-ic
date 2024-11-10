@@ -1,0 +1,37 @@
+name: Python CI
+
+# Este flujo de trabajo se ejecutará cada vez que se haga un push o un pull request
+on:
+  push:
+    branches:
+      - main  # Cambia 'main' por tu rama principal, si es necesario
+  pull_request:
+    branches:
+      - master  # Cambia 'main' por tu rama principal, si es necesario
+
+jobs:
+  test:
+    runs-on: ubuntu-latest  # Usamos Ubuntu como sistema operativo para ejecutar las pruebas
+
+    steps:
+      # Paso 1: Clonar el código del repositorio
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      # Paso 2: Configurar Python
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.10'  # Puedes usar cualquier versión de Python que necesites
+
+      # Paso 3: Instalar dependencias (si las tienes)
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          # Si tienes un archivo requirements.txt, descomenta la siguiente línea
+          # pip install -r requirements.txt
+
+      # Paso 4: Ejecutar las pruebas
+      - name: Run tests
+        run: |
+          python -m unittest discover  # Esto ejecutará las pruebas en todos los archivos de la carpeta 'test'
